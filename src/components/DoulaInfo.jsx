@@ -61,41 +61,41 @@ const DoulaInfo = () => {
                 {/* PHASE 1: THE LOCKED PHRASE */}
                 <motion.div
                     style={{ opacity: opacityPhrase, scale: scalePhrase }}
-                    className="absolute z-20 flex flex-col items-center justify-center pointer-events-none"
+                    className="absolute z-20 flex flex-col items-center justify-center pointer-events-none will-change-transform"
                 >
-                    <motion.h2 style={{ x: xLeft }} className="text-[18vw] md:text-[12vw] font-black text-white leading-[0.8] tracking-tighter whitespace-nowrap drop-shadow-2xl mix-blend-screen">
+                    <motion.h2 style={{ x: xLeft }} className="text-[18vw] md:text-[12vw] font-black text-white leading-[0.8] tracking-tighter whitespace-nowrap drop-shadow-lg">
                         O QUE É
                     </motion.h2>
-                    <motion.h2 style={{ x: xRight }} className="text-[18vw] md:text-[12vw] font-serif italic text-primary-500 leading-[0.8] tracking-tighter whitespace-nowrap drop-shadow-2xl mix-blend-screen">
+                    <motion.h2 style={{ x: xRight }} className="text-[18vw] md:text-[12vw] font-serif italic text-primary-500 leading-[0.8] tracking-tighter whitespace-nowrap drop-shadow-lg">
                         SER DOULA
                     </motion.h2>
                 </motion.div>
 
                 {/* PHASE 2: WORD VORTEX (Bridging the gap) */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 w-full h-full">
-                    <motion.div style={{ scale: word1Scale, opacity: word1Opacity }} className="absolute text-white font-bold uppercase tracking-[0.5em] text-4xl">
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 w-full h-full overflow-hidden">
+                    <motion.div style={{ scale: word1Scale, opacity: word1Opacity }} className="absolute text-white font-bold uppercase tracking-[0.5em] text-4xl will-change-transform">
                         AMOR
                     </motion.div>
-                    <motion.div style={{ scale: word2Scale, opacity: word2Opacity }} className="absolute text-secondary-400 font-serif italic text-6xl">
+                    <motion.div style={{ scale: word2Scale, opacity: word2Opacity }} className="absolute text-secondary-400 font-serif italic text-6xl will-change-transform">
                         Respeito
                     </motion.div>
-                    <motion.div style={{ scale: word1Scale, opacity: word2Opacity, rotate: 90 }} className="absolute text-primary-400 font-bold uppercase tracking-[0.5em] text-4xl">
+                    <motion.div style={{ scale: word1Scale, opacity: word2Opacity, rotate: 90 }} className="absolute text-primary-400 font-bold uppercase tracking-[0.5em] text-4xl will-change-transform">
                         Ciência
                     </motion.div>
                 </div>
 
                 {/* PHASE 3: THE CONTENT (Cards) */}
                 <motion.div
-                    style={{ opacity: contentOpacity, y: contentY }}
-                    className="relative z-30 max-w-7xl w-full px-4 flex flex-col md:flex-row gap-6 items-stretch justify-center"
+                    style={{ opacity: contentOpacity, y: contentY, transform: 'translate3d(0,0,0)' }}
+                    className="relative z-30 max-w-7xl w-full px-4 flex flex-col md:flex-row gap-6 items-stretch justify-center will-change-transform"
                 >
                     {[
                         { icon: <HeartHandshake className="w-12 h-12 mb-6 text-primary-400" />, title: "Apoio Emocional", desc: "Sua rocha em meio à tempestade, oferecendo segurança e calma a cada contração." },
                         { icon: <ShieldCheck className="w-12 h-12 mb-6 text-secondary-400" />, title: "Defesa de Direitos", desc: "A voz firme que protege seus desejos e garante que seu plano de parto seja respeitado." },
                         { icon: <BookOpen className="w-12 h-12 mb-6 text-primary-400" />, title: "Informação", desc: "Ciência e evidências para que você tome decisões conscientes e sem medo." }
                     ].map((item, i) => (
-                        <div key={i} className="flex-1 bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-3xl hover:bg-white/10 transition-colors duration-500 group flex flex-col items-center text-center">
-                            <div className="bg-white/5 p-5 rounded-full mb-6 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                        <div key={i} className="flex-1 bg-gray-950/80 border border-white/10 p-6 md:p-8 rounded-3xl hover:bg-gray-900 transition-colors duration-500 group flex flex-col items-center text-center">
+                            <div className="bg-white/5 p-5 rounded-full mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md">
                                 {item.icon}
                             </div>
                             <h3 className="text-2xl font-serif text-white mb-4">{item.title}</h3>

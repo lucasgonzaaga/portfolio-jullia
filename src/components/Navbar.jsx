@@ -40,7 +40,7 @@ const Navbar = () => {
         { title: "Início", href: "#hero" },
         { title: "Quem Sou", href: "#about" },
         { title: "O que é Doula", href: "#doula-info" },
-        { title: "Serviços", href: "#services" },
+        { title: "Trabalhos", href: "#services" },
         { title: "Contatos", href: "#contact" },
     ];
 
