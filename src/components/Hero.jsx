@@ -122,12 +122,15 @@ const Hero = () => {
                         <span className="block text-[35vw] md:text-[25vw] font-script leading-none -ml-4 text-purple-50 drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]">
                             Maju
                         </span>
-
-                        {/* SCROLL INDICATOR (Alternating Mouse & Text) - Positioned immediately below */}
-                        <div className="mt-8 flex flex-col items-center gap-4">
-                            <ScrollIndicator />
-                        </div>
                     </div>
+                </motion.div>
+
+                {/* SCROLL INDICATOR - Now at the bottom of the screen */}
+                <motion.div
+                    style={{ opacity: maskOpacity }}
+                    className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30"
+                >
+                    <ScrollIndicator />
                 </motion.div>
 
                 {/* 3. VELOCITY CONTENT (The "Chaos" after entering) */}
