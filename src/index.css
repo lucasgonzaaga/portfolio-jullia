@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  /* Fonts */
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+
+  /* Primary Colors (Purple) */
+  --color-primary-50: #faf5ff;
+  --color-primary-100: #f3e8ff;
+  --color-primary-200: #e9d5ff;
+  --color-primary-300: #d8b4fe;
+  --color-primary-400: #c084fc;
+  --color-primary-500: #a855f7;
+  --color-primary-600: #9333ea;
+  --color-primary-700: #7e22ce;
+  --color-primary-800: #6b21a8;
+  --color-primary-900: #581c87;
+  --color-primary-950: #3b0764;
+
+  /* Secondary Colors (Green) */
+  --color-secondary-50: #f2fcf5;
+  --color-secondary-100: #e3f9e9;
+  --color-secondary-200: #c1f0cf;
+  --color-secondary-300: #90e0aa;
+  --color-secondary-400: #56c681;
+  --color-secondary-500: #32ab63;
+  --color-secondary-600: #23894d;
+  --color-secondary-700: #1e6d3f;
+  --color-secondary-800: #1a5635;
+  --color-secondary-900: #16472e;
+  --color-secondary-950: #0b2619;
+
+  /* Keyframes */
+  --animate-blob: blob 7s infinite;
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes slow-zoom {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+@layer utilities {
+  .animate-slow-zoom {
+    animation: slow-zoom 20s linear infinite alternate;
+  }
+
+  .bg-noise {
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased text-gray-800 bg-primary-50;
+  }
+}
