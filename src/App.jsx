@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Lenis from 'lenis';
 import { AnimatePresence } from 'framer-motion';
+import { Analytics } from "@vercel/analytics/next"
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -42,6 +43,7 @@ function App() {
           <Cursor />
           <Navbar />
           <main>
+            <Analytics />
             <Hero />
             <About />
             <DoulaInfo />

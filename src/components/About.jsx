@@ -9,7 +9,6 @@ const About = () => {
         offset: ["start start", "end end"]
     });
 
-    // Dynamic Image Effects
     const grayscale = useTransform(scrollYProgress, [0, 0.3, 0.8], ["100%", "0%", "0%"]);
     const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
@@ -18,34 +17,27 @@ const About = () => {
 
             <div className="flex flex-col lg:flex-row">
 
-                {/* LEFT: STICKY IMAGE CONTAINER */}
                 <div className="lg:w-1/2 h-[50vh] lg:h-screen sticky top-0 overflow-hidden">
                     <div className="absolute inset-0 bg-primary-100">
-                        {/* Dynamic Image */}
                         <motion.div
                             style={{ filter: `grayscale(${grayscale})`, scale }}
                             className="w-full h-full bg-[url('/jullia-about.jpg')] bg-cover bg-center transition-all duration-700"
                         ></motion.div>
                         <div className="absolute inset-0 bg-primary-900/10 mix-blend-multiply"></div>
                     </div>
-                    {/* Floating Decorative Label */}
                     <div className="absolute bottom-12 left-12 text-white/80 mix-blend-difference z-10 hidden lg:block">
                         <span className="block text-xs tracking-[0.3em] uppercase mb-2">Portrait</span>
                         <span className="font-serif text-4xl italic">Doula Maju</span>
                     </div>
                 </div>
 
-                {/* RIGHT: SCROLLABLE CONTENT */}
-                <div className="lg:w-1/2 px-6 py-20 lg:py-32 lg:px-24 bg-white relative overflow-hidden">
+                <div className="lg:w-1/2 px-8 sm:px-12 py-20 lg:py-32 lg:px-24 bg-white relative overflow-hidden">
 
-                    {/* Background Texture/Gradient */}
                     <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-primary-50 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
                     <div className="absolute bottom-0 right-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none"></div>
 
-                    {/* CONNECTING LINE */}
                     <div className="absolute left-6 lg:left-24 top-40 bottom-40 w-px bg-gradient-to-b from-primary-200 via-secondary-200 to-transparent hidden lg:block opacity-50"></div>
 
-                    {/* Chapter 1: Intro */}
                     <motion.div
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -53,7 +45,6 @@ const About = () => {
                         transition={{ duration: 0.8 }}
                         className="mb-24 lg:mb-32 lg:min-h-[60vh] flex flex-col justify-center relative pl-0 lg:pl-12"
                     >
-                        {/* Chapter Marker */}
                         <div className="absolute -left-[5px] top-2 w-3 h-3 bg-white border-2 border-primary-400 rounded-full hidden lg:block z-10"></div>
 
                         <span className="text-secondary-600 font-bold tracking-widest uppercase text-xs mb-6 flex items-center gap-2">
@@ -68,7 +59,6 @@ const About = () => {
                         </p>
                     </motion.div>
 
-                    {/* Chapter 2: Philosophy */}
                     <motion.div
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -76,7 +66,6 @@ const About = () => {
                         transition={{ duration: 0.8 }}
                         className="mb-24 lg:mb-32 lg:min-h-[60vh] flex flex-col justify-center relative pl-0 lg:pl-12"
                     >
-                        {/* Chapter Marker */}
                         <div className="absolute -left-[5px] top-2 w-3 h-3 bg-white border-2 border-secondary-400 rounded-full hidden lg:block z-10"></div>
 
                         <span className="text-secondary-600 font-bold tracking-widest uppercase text-xs mb-6 flex items-center gap-2">
@@ -93,7 +82,6 @@ const About = () => {
                         </p>
                     </motion.div>
 
-                    {/* Chapter 3: Experience */}
                     <motion.div
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -101,7 +89,6 @@ const About = () => {
                         transition={{ duration: 0.8 }}
                         className="mb-12 relative pl-0 lg:pl-12"
                     >
-                        {/* Chapter Marker */}
                         <div className="absolute -left-[5px] top-2 w-3 h-3 bg-white border-2 border-primary-600 rounded-full hidden lg:block z-10"></div>
 
                         <span className="text-secondary-600 font-bold tracking-widest uppercase text-xs mb-6 flex items-center gap-2">

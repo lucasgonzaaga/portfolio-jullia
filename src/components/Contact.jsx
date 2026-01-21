@@ -17,23 +17,20 @@ const Contact = () => {
         <section id="contact" data-theme="dark" className="relative py-32 bg-primary-950 text-white overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-                {/* Header */}
                 <div className="mb-24">
                     <motion.h2
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1 }}
-                        className="text-[12vw] leading-[0.85] font-serif font-bold tracking-tighter mix-blend-difference"
+                        className="text-[12vw] sm:text-[10vw] lg:text-[8vw] leading-[0.85] font-serif font-bold tracking-tighter mix-blend-difference"
                     >
                         Vamos <br />
                         <span className="text-secondary-400 italic">Conversar?</span>
                     </motion.h2>
                 </div>
 
-                {/* Content Wrapper */}
                 <div className="grid md:grid-cols-2 gap-20 items-end">
 
-                    {/* Email Copy Interaction */}
                     <div className="space-y-8">
                         <p className="text-primary-200 text-lg max-w-md font-light">
                             Sua história merece ser ouvida com atenção e carinho. Estou aqui para acolher suas dúvidas e sonhos.
@@ -56,7 +53,6 @@ const Contact = () => {
                         </div>
                     </div>
 
-                    {/* New Social Links with Magnetic Buttons */}
                     <div className="flex flex-col gap-6 items-start md:items-end">
                         <MagneticButton>
                             <a
@@ -85,7 +81,6 @@ const Contact = () => {
 
                 </div>
 
-                {/* Footer in Contact Section */}
                 <div className="mt-32 pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-primary-300/50 text-sm">
                     <p>© {new Date().getFullYear()} Doula Maju</p>
                     <p>Feito com amor</p>
@@ -93,7 +88,6 @@ const Contact = () => {
 
             </div>
 
-            {/* Background Gradient */}
             <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-primary-800/20 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
         </section>
     );

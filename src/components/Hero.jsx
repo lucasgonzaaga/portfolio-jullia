@@ -28,7 +28,6 @@ const ScrollIndicator = () => {
                     </motion.div>
                 ) : (
                     <>
-                        {/* DESKTOP: MOUSE */}
                         <motion.div
                             key="mouse-desktop"
                             initial={{ opacity: 0, y: 10 }}
@@ -43,7 +42,6 @@ const ScrollIndicator = () => {
                             />
                         </motion.div>
 
-                        {/* MOBILE: HAND SWIPE (Pointer Dragging Down) */}
                         <motion.div
                             key="hand-mobile"
                             initial={{ opacity: 0, y: 10 }}
@@ -72,44 +70,31 @@ const Hero = () => {
         offset: ["start start", "end end"]
     });
 
-    // --- ZOOM / MASK ANIMATIONS (First Phase) ---
-    // Tightened spring for instantaneous feel without desync
     const smoothProgress = useSpring(scrollYProgress, {
         stiffness: 400,
         damping: 40,
         restDelta: 0.001
     });
 
-    // Reducing scale to 20x for peak GPU efficiency while keeping the portal feel
     const scale = useTransform(smoothProgress, [0, 0.35], [1, 20]);
-    // Opacity of the text mask: fades out as we fly through
     const maskOpacity = useTransform(smoothProgress, [0.28, 0.35], [1, 0]);
-    // Video/Bg Opacity: Fades in
     const videoOpacity = useTransform(smoothProgress, [0.15, 0.35], [0, 1]);
 
 
-    // --- VELOCITY & PARALLAX (Second Phase) ---
-    // Unified everything to smoothProgress to ensure perfect synchronization
+    const xLeft = useTransform(smoothProgress, [0.3, 1], ["-10%", "-50%"]);
+    const xRight = useTransform(smoothProgress, [0.3, 1], ["10%", "50%"]);
 
-    // Text Velocity: Moves horizontally
-    const xLeft = useTransform(smoothProgress, [0.3, 1], ["-20%", "-50%"]);
-    const xRight = useTransform(smoothProgress, [0.3, 1], ["20%", "50%"]);
-
-    // Parallax Images Y-Axis
     const ySlow = useTransform(smoothProgress, [0.3, 1], [0, -100]);
     const yMedium = useTransform(smoothProgress, [0.3, 1], [0, -200]);
     const yFast = useTransform(smoothProgress, [0.3, 1], [0, -400]);
 
-    // Opacity for the reveal elements
     const revealOpacity = useTransform(smoothProgress, [0.35, 0.45], [0, 1]);
 
     return (
         <section ref={containerRef} id="hero" data-theme="dark" className="relative h-[400vh] bg-primary-950">
 
-            {/* STICKY CONTAINER */}
             <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center will-change-contents">
 
-                {/* 1. CINEMATIC BACKGROUND (The "World" we enter) */}
                 <motion.div
                     style={{ opacity: videoOpacity }}
                     className="absolute inset-0 z-0 bg-black"
@@ -118,7 +103,6 @@ const Hero = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-primary-950 via-black/50 to-transparent"></div>
                 </motion.div>
 
-                {/* 2. GIANT TEXT MASK (The "Portal") */}
                 <motion.div
                     style={{
                         scale,
@@ -129,16 +113,15 @@ const Hero = () => {
                     className="relative z-10 flex flex-col items-center justify-center pointer-events-none text-purple-100 origin-center will-change-transform"
                 >
                     <div className="text-center">
-                        <span className="block text-[12vw] md:text-[8vw] font-serif uppercase tracking-[0.2em] leading-none mb-[-2vw] opacity-80">
+                        <span className="block text-[14vw] sm:text-[10vw] md:text-[8vw] lg:text-[7vw] font-serif uppercase tracking-[0.2em] leading-none mb-[-2vw] opacity-80">
                             Doula
                         </span>
-                        <span className="block text-[35vw] md:text-[25vw] font-script leading-none -ml-4 text-primary-50">
+                        <span className="block text-[40vw] sm:text-[30vw] md:text-[25vw] lg:text-[20vw] font-script leading-none -ml-4 text-primary-50">
                             Maju
                         </span>
                     </div>
                 </motion.div>
 
-                {/* SCROLL INDICATOR - Now at the bottom of the screen */}
                 <motion.div
                     style={{
                         opacity: useTransform(smoothProgress, [0, 0.1], [1, 0]),
@@ -149,7 +132,6 @@ const Hero = () => {
                     <ScrollIndicator />
                 </motion.div>
 
-                {/* 3. VELOCITY CONTENT (The "Chaos" after entering) */}
                 <motion.div
                     style={{
                         opacity: revealOpacity,
@@ -158,26 +140,24 @@ const Hero = () => {
                     }}
                     className="absolute z-20 inset-0 flex flex-col items-center justify-center pointer-events-none will-change-opacity"
                 >
-                    {/* HUGE VELOCITY TEXT */}
                     <div className="relative w-full overflow-hidden py-10">
                         <motion.div style={{ x: xRight }} className="whitespace-nowrap">
-                            <span className="text-[18vw] md:text-[12vw] font-serif italic text-white/10 opacity-50 block leading-none">
+                            <span className="text-[14vw] sm:text-[12vw] md:text-[10vw] lg:text-[12vw] font-serif italic text-white/10 opacity-50 block leading-none">
                                 Transformando Vidas
                             </span>
                         </motion.div>
                         <motion.div style={{ x: xLeft }} className="whitespace-nowrap mt-[-4vw]">
-                            <span className="text-[18vw] md:text-[12vw] font-serif font-bold text-white block leading-none tracking-tighter drop-shadow-2xl">
+                            <span className="text-[14vw] sm:text-[12vw] md:text-[10vw] lg:text-[12vw] font-serif font-bold text-white block leading-none tracking-tighter drop-shadow-2xl">
                                 TRANSFORMANDO
                             </span>
                         </motion.div>
                         <motion.div style={{ x: xRight }} className="whitespace-nowrap mt-[-2vw]">
-                            <span className="text-[18vw] md:text-[12vw] font-script text-transparent bg-clip-text bg-gradient-to-r from-secondary-300 to-primary-300 block leading-none pr-10 md:pr-20">
+                            <span className="text-[14vw] sm:text-[12vw] md:text-[10vw] lg:text-[12vw] font-script text-transparent bg-clip-text bg-gradient-to-r from-secondary-300 to-primary-300 block leading-none pr-10 md:pr-20">
                                 Vidas.
                             </span>
                         </motion.div>
                     </div>
 
-                    {/* FLOATING PARALLAX IMAGES (Scatter) */}
                     <motion.div style={{ y: yFast }} className="absolute top-[15%] left-[10%] w-[15vw] aspect-[3/4] rounded-lg overflow-hidden border border-white/20 shadow-2xl rotate-[-6deg] hidden lg:block">
                         <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=1777" className="w-full h-full object-cover opacity-80" alt="Mãos" />
                     </motion.div>
@@ -186,7 +166,6 @@ const Hero = () => {
                         <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?q=80&w=2070" className="w-full h-full object-cover scale-150 opacity-80" alt="Bebê" />
                     </motion.div>
 
-                    {/* CENTRAL CTA (Anchor) */}
                     <div className="mt-12 pointer-events-auto">
                         <MagneticButton className="group relative inline-flex items-center gap-3 px-12 py-6 bg-white text-black rounded-full font-bold uppercase tracking-widest hover:bg-secondary-400 hover:scale-110 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.3)]">
                             <a href="#about" className="absolute inset-0 z-10"></a>
@@ -197,7 +176,6 @@ const Hero = () => {
 
                 </motion.div>
 
-                {/* GRAIN OVERLAY */}
                 <div className="absolute inset-0 pointer-events-none opacity-[0.05] z-50 mix-blend-overlay"
                     style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }}>
                 </div>

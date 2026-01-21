@@ -9,10 +9,7 @@ const Navbar = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            // Show navbar after scrolling 100vh
-            setIsVisible(window.scrollY > window.innerHeight * 0.8);
 
-            // Detection Logic: Find all sections with data-theme
             const sections = document.querySelectorAll('[data-theme]');
             let currentIsDark = false;
             const scrollPos = window.scrollY + 80;
@@ -44,7 +41,6 @@ const Navbar = () => {
         { title: "Contatos", href: "#contact" },
     ];
 
-    // Dynamic classes based on background
     const textColor = isDarkSection ? 'text-white' : 'text-gray-900';
     const logoBg = isDarkSection ? 'bg-white/20 backdrop-blur-md' : 'bg-primary-100';
     const logoIcon = isDarkSection ? 'text-white' : 'text-primary-600';
@@ -56,7 +52,6 @@ const Navbar = () => {
         <nav className={`fixed w-full z-50 transition-all duration-500 py-6 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
-                    {/* Logo */}
                     <div className="flex-shrink-0 flex items-center gap-2">
                         <div className={`p-2 rounded-full transition-colors duration-300 ${logoBg}`}>
                             <Heart className={`w-6 h-6 fill-current transition-colors duration-300 ${logoIcon}`} />
@@ -66,7 +61,6 @@ const Navbar = () => {
                         </span>
                     </div>
 
-                    {/* Desktop Menu */}
                     <div className="hidden md:block">
                         <div className="ml-10 flex items-center space-x-8">
                             {navLinks.map((link) => (
@@ -87,7 +81,6 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    {/* Mobile menu button */}
                     <div className="md:hidden">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
@@ -99,7 +92,6 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {/* Mobile Menu */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div

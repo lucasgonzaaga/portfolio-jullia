@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
@@ -7,7 +6,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Purples for elegance and spirituality
+
         primary: {
           50: '#faf5ff',
           100: '#f3e8ff',
@@ -21,7 +20,6 @@ export default {
           900: '#581c87',
           950: '#3b0764',
         },
-        // Greens for nature, life and growth (Sage/Emerald vibes)
         secondary: {
           50: '#f2fcf5',
           100: '#e3f9e9',
@@ -38,7 +36,7 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        serif: ['Playfair Display', 'serif'], // Good for headings to give a premium look
+        serif: ['Playfair Display', 'serif'],
       }
     },
   },

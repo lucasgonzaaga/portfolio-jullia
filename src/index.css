@@ -1,12 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  /* Fonts */
   --font-sans: 'Inter', sans-serif;
   --font-serif: 'Playfair Display', serif;
   --font-script: 'Mr De Haviland', cursive;
 
-  /* Primary Colors (Mauve #BD87B5) */
   --color-primary-50: #fcf8fa;
   --color-primary-100: #f5e9f1;
   --color-primary-200: #eedbe9;
@@ -19,7 +17,6 @@
   --color-primary-900: #51364d;
   --color-primary-950: #2d1e2b;
 
-  /* Secondary Colors (Green) */
   --color-secondary-50: #f2fcf5;
   --color-secondary-100: #e3f9e9;
   --color-secondary-200: #c1f0cf;
@@ -32,7 +29,6 @@
   --color-secondary-900: #16472e;
   --color-secondary-950: #0b2619;
 
-  /* Keyframes */
   --animate-blob: blob 7s infinite;
 }
 

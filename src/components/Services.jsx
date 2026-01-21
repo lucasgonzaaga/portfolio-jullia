@@ -11,18 +11,14 @@ const Services = () => {
     const [isMobile, setIsMobile] = React.useState(false);
 
     React.useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        const checkMobile = () => setIsMobile(window.innerWidth < 1025);
         checkMobile();
         window.addEventListener('resize', checkMobile);
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-    // Horizontal move: 
-    // Desktop: pl-[40vw] -> cards move -55%
-    // Mobile: we keep it horizontal too, but adjust the 'x' to be visible
     const x = useTransform(scrollYProgress, [0, 1], ["0%", "-70%"]);
 
-    // Title opacity: Fades as cards scroll in
     const titleOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
 
     const services = [
@@ -56,7 +52,6 @@ const Services = () => {
         <section ref={targetRef} id="services" data-theme="dark" className={`relative bg-gray-900 ${isMobile ? 'h-auto py-24' : 'h-[300vh]'}`}>
             <div className={`flex items-center overflow-hidden ${isMobile ? 'relative flex-col' : 'sticky top-0 h-screen'}`}>
 
-                {/* Title Section */}
                 <motion.div
                     style={isMobile ? { opacity: 1 } : { opacity: titleOpacity }}
                     className={`${isMobile ? 'px-8 mb-12 w-full text-center relative' : 'absolute left-20 z-20 mix-blend-difference text-white'}`}
@@ -69,7 +64,6 @@ const Services = () => {
                     </p>
                 </motion.div>
 
-                {/* Horizontal Scroll Cards */}
                 <div className={`${isMobile ? 'w-full overflow-x-auto px-8 scroll-smooth snap-x snap-mandatory' : 'w-full'}`}>
                     <motion.div
                         style={isMobile ? {} : { x }}

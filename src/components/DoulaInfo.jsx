@@ -9,9 +9,6 @@ const DoulaInfo = () => {
         offset: ["start start", "end end"]
     });
 
-    // --- PHASE 1: THE PHRASE (0 - 0.4) ---
-    // User wants it to "lock until the phrase finishes revealing".
-    // We bring them in and hold them.
     const xLeft = useTransform(scrollYProgress, [0, 0.3], ["-100%", "0%"]);
     const xRight = useTransform(scrollYProgress, [0, 0.3], ["100%", "0%"]);
     const opacityPhrase = useTransform(scrollYProgress, [0.4, 0.5], [1, 0]); // Extends visibility
@@ -36,10 +33,7 @@ const DoulaInfo = () => {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-    // ... (existing transforms) ...
-
     // --- PHASE 3: CONTENT REVEAL (0.6 - 1.0) ---
-    // Appearing immediately as the vortex clears
     const contentOpacity = useTransform(scrollYProgress, [0.6, 0.7], [0, 1]);
     // Desktop: Settle at 0. Mobile: Scroll UP to reveal bottom cards (-500px approx)
     const contentY = useTransform(scrollYProgress,
@@ -53,33 +47,31 @@ const DoulaInfo = () => {
 
             <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
 
-                {/* BACKGROUND ATMOSPHERE */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black"></div>
                 <div className="absolute top-[20%] left-[20%] w-[40vw] h-[40vw] bg-primary-900/20 rounded-full blur-[120px] animate-pulse"></div>
                 <div className="absolute bottom-[20%] right-[20%] w-[40vw] h-[40vw] bg-secondary-900/20 rounded-full blur-[120px] animate-pulse delay-700"></div>
 
-                {/* PHASE 1: THE LOCKED PHRASE */}
                 <motion.div
                     style={{ opacity: opacityPhrase, scale: scalePhrase }}
                     className="absolute z-20 flex flex-col items-center justify-center pointer-events-none will-change-transform"
                 >
-                    <motion.h2 style={{ x: xLeft }} className="text-[18vw] md:text-[12vw] font-black text-white leading-[0.8] tracking-tighter whitespace-nowrap drop-shadow-lg">
+                    <motion.h2 style={{ x: xLeft }} className="text-[14vw] sm:text-[12vw] md:text-[10vw] font-black text-white leading-[0.8] tracking-tighter whitespace-nowrap drop-shadow-lg">
                         O QUE É
                     </motion.h2>
-                    <motion.h2 style={{ x: xRight }} className="text-[18vw] md:text-[12vw] font-serif italic text-primary-500 leading-[0.8] tracking-tighter whitespace-nowrap drop-shadow-lg">
+                    <motion.h2 style={{ x: xRight }} className="text-[14vw] sm:text-[12vw] md:text-[10vw] font-serif italic text-primary-500 leading-[0.8] tracking-tighter whitespace-nowrap drop-shadow-lg">
                         SER DOULA
                     </motion.h2>
                 </motion.div>
 
                 {/* PHASE 2: WORD VORTEX (Bridging the gap) */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 w-full h-full overflow-hidden">
-                    <motion.div style={{ scale: word1Scale, opacity: word1Opacity }} className="absolute text-white font-bold uppercase tracking-[0.5em] text-4xl will-change-transform">
+                    <motion.div style={{ scale: word1Scale, opacity: word1Opacity }} className="absolute text-white font-bold uppercase tracking-[0.5em] text-2xl md:text-4xl will-change-transform">
                         AMOR
                     </motion.div>
-                    <motion.div style={{ scale: word2Scale, opacity: word2Opacity }} className="absolute text-secondary-400 font-serif italic text-6xl will-change-transform">
+                    <motion.div style={{ scale: word2Scale, opacity: word2Opacity }} className="absolute text-secondary-400 font-serif italic text-4xl md:text-6xl will-change-transform">
                         Respeito
                     </motion.div>
-                    <motion.div style={{ scale: word1Scale, opacity: word2Opacity, rotate: 90 }} className="absolute text-primary-400 font-bold uppercase tracking-[0.5em] text-4xl will-change-transform">
+                    <motion.div style={{ scale: word1Scale, opacity: word2Opacity, rotate: 90 }} className="absolute text-primary-400 font-bold uppercase tracking-[0.5em] text-2xl md:text-4xl will-change-transform">
                         Ciência
                     </motion.div>
                 </div>
